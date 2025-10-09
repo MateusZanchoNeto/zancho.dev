@@ -6,6 +6,7 @@ import Toolbar from "./Toolbar";
 import Window from "./Window";
 import Calculator from "./apps/Calculator";
 import TaskManager from "./apps/taskManager";
+import Notes from "./apps/notes";
 
 const AboutMeContent = () => <div>This is the About Me section.</div>;
 const ProjectsContent = () => <div>Here are my projects.</div>;
@@ -26,6 +27,8 @@ const Desktop: React.FC = () => {
                 return <Calculator />;
             case "taskManager":
                 return <TaskManager />;
+            case "notes":
+                return <Notes />;
             default:
                 return <div>Content for {id}</div>;
         }

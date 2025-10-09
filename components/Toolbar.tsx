@@ -26,7 +26,12 @@ const apps = [
         icon: <Calculator />,
         defaultSize: { width: 320, height: 460 },
     },
-    { id: "notes", title: "Notes", icon: <BookText /> },
+    {
+        id: "notes",
+        title: "Notes",
+        icon: <BookText />,
+        defaultSize: { width: 750, height: 500 },
+    },
     {
         id: "taskManager",
         title: "Task Manager",
