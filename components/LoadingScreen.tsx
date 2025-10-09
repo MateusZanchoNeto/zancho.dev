@@ -1,26 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { finishBooting } from "@/lib/redux/slices/appSlice";
 
-const morpheusQuote =
-    'There\'s a difference between knowing the path and walking the path\n- Morpheus, "The Matrix"';
-const SCRAMBLE_CHARS = "#$%&*+-<=>?@[\\]^_";
-const REVEAL_SPEED_MS = 10;
-const SCRAMBLE_SPEED_MS = 25;
-const SCRAMBLE_ITERATIONS = 2;
-
 export default function LoadingScreen() {
     const [progress, setProgress] = useState(0);
-    const [typedQuote, setTypedQuote] = useState("");
-    const [showCursor, setShowCursor] = useState(true);
-
-    const quoteIndex = useRef(0);
-    const scrambleIteration = useRef(0);
-    const animationTimeout = useRef<NodeJS.Timeout | null>(null);
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -33,60 +19,10 @@ export default function LoadingScreen() {
                 }
                 return prev + 1;
             });
-        }, 60);
-
-        const cursorInterval = setInterval(() => {
-            setShowCursor((prev) => !prev);
-        }, 400);
-
-        const scrambleEffect = () => {
-            if (quoteIndex.current >= morpheusQuote.length) {
-                return;
-            }
-
-            const isRevealingChar = scrambleIteration.current === SCRAMBLE_ITERATIONS;
-
-            let displayText = "";
-            for (let i = 0; i < morpheusQuote.length; i++) {
-                if (i < quoteIndex.current) {
-                    displayText += morpheusQuote[i];
-                } else if (i === quoteIndex.current) {
-                    if (isRevealingChar) {
-                        displayText += morpheusQuote[i];
-                    } else {
-                        const randomIndex = Math.floor(
-                            Math.random() * SCRAMBLE_CHARS.length,
-                        );
-                        displayText += SCRAMBLE_CHARS[randomIndex];
-                    }
-                } else {
-                    displayText += " ";
-                }
-            }
-
-            setTypedQuote(displayText.trimEnd());
-
-            if (isRevealingChar) {
-                quoteIndex.current++;
-                scrambleIteration.current = 0;
-                animationTimeout.current = setTimeout(scrambleEffect, REVEAL_SPEED_MS);
-            } else {
-                scrambleIteration.current++;
-                animationTimeout.current = setTimeout(
-                    scrambleEffect,
-                    SCRAMBLE_SPEED_MS,
-                );
-            }
-        };
-
-        scrambleEffect();
+        }, 20);
 
         return () => {
             clearInterval(loadingInterval);
-            clearInterval(cursorInterval);
-            if (animationTimeout.current) {
-                clearTimeout(animationTimeout.current);
-            }
         };
     }, [dispatch]);
 
@@ -108,18 +44,9 @@ export default function LoadingScreen() {
                         style={{ width: `${progress}%` }}
                     ></div>
                 </div>
-                <p className="text-green-500 font-mono mt-2 text-sm mb-12">
+                <p className="text-green-500 font-mono mt-2 text-sm">
                     Booting Linux... [{progress}%]
                 </p>
-
-                <div className="bg-gray-900 border border-green-800 text-green-400 p-4 max-w-lg mx-auto shadow-lg">
-                    <p className="font-mono text-left text-sm whitespace-pre-wrap h-10 font-bold">
-                        {typedQuote}
-                        {showCursor && quoteIndex.current < morpheusQuote.length && (
-                            <span className="animate-blink">_</span>
-                        )}
-                    </p>
-                </div>
             </div>
         </div>
     );

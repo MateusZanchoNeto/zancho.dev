@@ -8,6 +8,7 @@ import {
     verifyOwnerPassword,
 } from "@/lib/redux/slices/appSlice";
 import AnimatedRings from "./AnimatedRings";
+import ScrambleQuote from "./ScrambleQuote";
 
 export default function LoginScreen() {
     const dispatch = useDispatch<AppDispatch>();
@@ -24,8 +25,9 @@ export default function LoginScreen() {
     };
 
     return (
-        <div className="h-screen w-screen bg-black flex items-center justify-center font-mono relative">
+        <div className="h-screen w-screen bg-black flex flex-col items-center justify-center font-mono relative p-4 gap-12">
             <AnimatedRings />
+
             <div className="w-full max-w-sm p-8 bg-gray-900 border border-green-700 text-green-400 text-center z-10 rounded-2xl animate-pulse-glow">
                 <h1 className="text-2xl mb-6">[ zancho.dev ]</h1>
                 {!showPasswordInput ? (
@@ -75,6 +77,10 @@ export default function LoginScreen() {
                         </button>
                     </div>
                 )}
+            </div>
+
+            <div className="z-10">
+                <ScrambleQuote />
             </div>
         </div>
     );

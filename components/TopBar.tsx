@@ -70,23 +70,23 @@ const TopBar: React.FC = () => {
                 </button>
 
                 {isPowerMenuOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-48 bg-gray-900 border border-white/20 rounded-md shadow-lg py-1">
+                    <div className="absolute top-full left-0 mt-2 w-48 bg-black border border-white/20 rounded-md shadow-lg py-1">
                         <button
                             onClick={handleReboot}
-                            className="w-full text-left px-3 py-1.5 flex items-center hover:bg-green-800/50"
+                            className="w-full text-left px-3 py-1.5 flex items-center hover:bg-green-500/50"
                         >
                             <RefreshCw size={16} className="mr-2" /> Reboot
                         </button>
                         <button
                             onClick={handleLogout}
-                            className="w-full text-left px-3 py-1.5 flex items-center hover:bg-green-800/50"
+                            className="w-full text-left px-3 py-1.5 flex items-center hover:bg-green-500/50"
                         >
                             <LogOut size={16} className="mr-2" /> Logout
                         </button>
                         <div className="border-t border-white/10 my-1"></div>
                         <button
                             onClick={handleShutdown}
-                            className="w-full text-left px-3 py-1.5 flex items-center text-red-400 hover:bg-red-800/50"
+                            className="w-full text-left px-3 py-1.5 flex items-center text-red-400 hover:bg-red-500/50"
                         >
                             <PowerOff size={16} className="mr-2" /> Shutdown
                         </button>
