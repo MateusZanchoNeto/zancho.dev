@@ -47,6 +47,7 @@ const Desktop: React.FC = () => {
                         position={win.position}
                         zIndex={win.zIndex}
                         size={win.size}
+                        isFullscreen={win.isFullscreen}
                     >
                         {renderWindowContent(win.id)}
                     </Window>

@@ -1,5 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+interface WindowRestoreState {
+    position: { x: number; y: number };
+    size: { width: number; height: number };
+}
+
 export interface WindowState {
     id: string;
     title: string;
@@ -7,6 +12,8 @@ export interface WindowState {
     position: { x: number; y: number };
     zIndex: number;
     size: { width: number; height: number };
+    isFullscreen: boolean;
+    previousState?: WindowRestoreState;
 }
 
 interface WindowsState {
@@ -48,6 +55,7 @@ const windowsSlice = createSlice({
                     },
                     zIndex: state.nextZIndex,
                     size: size || { width: 420, height: 250 },
+                    isFullscreen: false,
                 };
                 state.windows.push(newWindow);
                 state.nextZIndex += 1;
@@ -66,6 +74,28 @@ const windowsSlice = createSlice({
                 state.nextZIndex = newZIndex + 1;
             }
         },
+        toggleFullscreen: (state, action: PayloadAction<string>) => {
+            const windowId = action.payload;
+            const window = state.windows.find((w) => w.id === windowId);
+
+            if (window) {
+                if (window.isFullscreen) {
+                    if (window.previousState) {
+                        window.position = window.previousState.position;
+                        window.size = window.previousState.size;
+                        window.previousState = undefined;
+                    }
+                    window.isFullscreen = false;
+                } else {
+                    window.previousState = {
+                        position: window.position,
+                        size: window.size,
+                    };
+                    window.position = { x: 0, y: 0 };
+                    window.isFullscreen = true;
+                }
+            }
+        },
         updateWindowPosition: (
             state,
             action: PayloadAction<{ id: string; position: { x: number; y: number } }>,
@@ -79,6 +109,11 @@ const windowsSlice = createSlice({
     },
 });
 
-export const { openWindow, closeWindow, focusWindow, updateWindowPosition } =
-    windowsSlice.actions;
+export const {
+    openWindow,
+    closeWindow,
+    focusWindow,
+    updateWindowPosition,
+    toggleFullscreen,
+} = windowsSlice.actions;
 export default windowsSlice.reducer;

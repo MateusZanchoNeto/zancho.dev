@@ -3,7 +3,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/redux/store";
 import LoadingScreen from "@/components/LoadingScreen";
-import LoginScreen from "@/components/LoginScreen"; // Import LoginScreen
+import LoginScreen from "@/components/LoginScreen";
 import Desktop from "@/components/Desktop";
 
 export default function Home() {
@@ -16,7 +16,5 @@ export default function Home() {
             return <LoginScreen />;
         case "DESKTOP":
             return <Desktop />;
-        default:
-            return <LoginScreen />; // Fallback to login
     }
 }
