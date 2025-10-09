@@ -32,3 +32,75 @@ body {
   padding: 0;
   overflow: hidden;
 }
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes ring-rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ring-rotate-fast {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-ring-rotate-slow {
+  animation: ring-rotate-slow 60s linear infinite;
+}
+
+.animate-ring-rotate-fast {
+  animation: ring-rotate-fast 40s linear infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 15px 0px rgba(16, 185, 129, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px 5px rgba(16, 185, 129, 0.4);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.desktop-background {
+  position: relative;
+  isolation: isolate;
+}
+
+.desktop-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background-image: url("/desktop-bg.gif");
+  background-size: cover;
+  background-position: center;
+
+  filter: blur(8px);
+}

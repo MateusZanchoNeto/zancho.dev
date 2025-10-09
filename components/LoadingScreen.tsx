@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
-import { setBootingState } from "@/lib/redux/slices/loadingSlice";
+import { finishBooting } from "@/lib/redux/slices/appSlice";
 
 const morpheusQuote =
     'There\'s a difference between knowing the path and walking the path\n- Morpheus, "The Matrix"';
@@ -28,7 +28,7 @@ export default function LoadingScreen() {
             setProgress((prev) => {
                 if (prev >= 100) {
                     clearInterval(loadingInterval);
-                    setTimeout(() => dispatch(setBootingState(false)), 500);
+                    setTimeout(() => dispatch(finishBooting()), 500);
                     return 100;
                 }
                 return prev + 1;

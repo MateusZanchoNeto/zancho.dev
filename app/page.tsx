@@ -3,10 +3,20 @@
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/redux/store";
 import LoadingScreen from "@/components/LoadingScreen";
+import LoginScreen from "@/components/LoginScreen"; // Import LoginScreen
 import Desktop from "@/components/Desktop";
 
 export default function Home() {
-    const isBooting = useSelector((state: RootState) => state.loading.isBooting);
+    const status = useSelector((state: RootState) => state.app.status);
 
-    return <>{isBooting ? <LoadingScreen /> : <Desktop />}</>;
+    switch (status) {
+        case "BOOTING":
+            return <LoadingScreen />;
+        case "LOGIN":
+            return <LoginScreen />;
+        case "DESKTOP":
+            return <Desktop />;
+        default:
+            return <LoginScreen />; // Fallback to login
+    }
 }

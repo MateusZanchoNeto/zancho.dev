@@ -1,8 +1,3 @@
 export default function Desktop() {
-    return (
-        <main
-            className="h-screen w-screen bg-cover bg-center"
-            style={{ backgroundImage: "url('/desktop-bg.gif')" }}
-        ></main>
-    );
+    return <main className="h-screen w-screen desktop-background"></main>;
 }
