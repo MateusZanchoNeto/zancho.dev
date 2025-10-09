@@ -27,7 +27,12 @@ const apps = [
         defaultSize: { width: 320, height: 460 },
     },
     { id: "notes", title: "Notes", icon: <BookText /> },
-    { id: "taskManager", title: "Task Manager", icon: <TerminalSquare /> },
+    {
+        id: "taskManager",
+        title: "Task Manager",
+        icon: <TerminalSquare />,
+        defaultSize: { width: 450, height: 320 },
+    },
 ];
 
 const Toolbar: React.FC = () => {
