@@ -64,7 +64,6 @@ const TopBar: React.FC = () => {
                 <button
                     onClick={() => setIsPowerMenuOpen(!isPowerMenuOpen)}
                     className="p-1 hover:bg-white/20 rounded"
-                    title="Power Options"
                 >
                     <Power size={18} className="text-green-400" />
                 </button>
