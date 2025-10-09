@@ -28,7 +28,7 @@ export default function LoginScreen() {
         <div className="h-screen w-screen bg-black flex flex-col items-center justify-center font-mono relative p-4 gap-12">
             <AnimatedRings />
 
-            <div className="w-full max-w-sm p-8 bg-gray-900 border border-green-700 text-green-400 text-center z-10 rounded-2xl animate-pulse-glow">
+            <div className="w-full max-w-sm p-8 bg-gray-900 border border-green-700 text-green-400 text-center z-30 rounded-2xl animate-pulse-glow">
                 <h1 className="text-2xl mb-6">[ zancho.dev ]</h1>
                 {!showPasswordInput ? (
                     <div className="space-y-4">
@@ -79,7 +79,7 @@ export default function LoginScreen() {
                 )}
             </div>
 
-            <div className="z-10">
+            <div className="z-30">
                 <ScrambleQuote />
             </div>
         </div>

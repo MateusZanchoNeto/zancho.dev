@@ -76,8 +76,8 @@ export default function ScrambleQuote() {
 
     return (
         <div className="w-full max-w-lg bg-gray-900 border border-green-800 text-green-400 p-4 shadow-lg rounded-xl">
-            <p className="font-mono text-center text-sm whitespace-pre-wrap h-10 font-bold">
-                {typedQuote}
+            <p className="font-mono text-center text-sm whitespace-pre-wrap font-bold">
+                <span>{typedQuote}</span>
                 {showCursor && <span className="animate-blink">_</span>}
             </p>
         </div>
