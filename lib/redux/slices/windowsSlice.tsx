@@ -6,6 +6,7 @@ export interface WindowState {
     isOpen: boolean;
     position: { x: number; y: number };
     zIndex: number;
+    size: { width: number; height: number };
 }
 
 interface WindowsState {
@@ -18,15 +19,18 @@ const initialState: WindowsState = {
     nextZIndex: 100,
 };
 
+interface OpenWindowPayload {
+    id: string;
+    title: string;
+    size?: { width: number; height: number };
+}
+
 const windowsSlice = createSlice({
     name: "windows",
     initialState,
     reducers: {
-        openWindow: (
-            state,
-            action: PayloadAction<{ id: string; title: string }>,
-        ) => {
-            const { id, title } = action.payload;
+        openWindow: (state, action: PayloadAction<OpenWindowPayload>) => {
+            const { id, title, size } = action.payload;
             const existingWindow = state.windows.find((w) => w.id === id);
 
             if (existingWindow) {
@@ -43,6 +47,7 @@ const windowsSlice = createSlice({
                         y: 100 + state.windows.length * 20,
                     },
                     zIndex: state.nextZIndex,
+                    size: size || { width: 420, height: 250 },
                 };
                 state.windows.push(newWindow);
                 state.nextZIndex += 1;

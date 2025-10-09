@@ -20,7 +20,12 @@ const apps = [
     { id: "projects", title: "Projects", icon: <Briefcase /> },
     { id: "contact", title: "Get In Touch", icon: <MessageSquare /> },
     { id: "settings", title: "Settings", icon: <Settings /> },
-    { id: "calculator", title: "Calculator", icon: <Calculator /> },
+    {
+        id: "calculator",
+        title: "Calculator",
+        icon: <Calculator />,
+        defaultSize: { width: 320, height: 460 },
+    },
     { id: "notes", title: "Notes", icon: <BookText /> },
     { id: "taskManager", title: "Task Manager", icon: <TerminalSquare /> },
 ];
@@ -28,8 +33,10 @@ const apps = [
 const Toolbar: React.FC = () => {
     const dispatch = useDispatch();
 
-    const handleIconClick = (appId: string, title: string) => {
-        dispatch(openWindow({ id: appId, title }));
+    const handleIconClick = (app: (typeof apps)[0]) => {
+        dispatch(
+            openWindow({ id: app.id, title: app.title, size: app.defaultSize }),
+        );
     };
 
     return (
@@ -38,7 +45,7 @@ const Toolbar: React.FC = () => {
                 {apps.map((app) => (
                     <Tooltip text={app.title} key={app.id} position="top">
                         <motion.button
-                            onClick={() => handleIconClick(app.id, app.title)}
+                            onClick={() => handleIconClick(app)}
                             className="w-12 h-12 flex items-center justify-center text-gray-300 hover:bg-white/20 rounded-lg"
                             whileHover={{ y: -8 }}
                             transition={{ type: "spring", stiffness: 300, damping: 15 }}

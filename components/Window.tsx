@@ -17,6 +17,7 @@ interface WindowProps {
     title: string;
     zIndex: number;
     position: { x: number; y: number };
+    size: { width: number; height: number };
     children: React.ReactNode;
 }
 
@@ -25,6 +26,7 @@ const Window: React.FC<WindowProps> = ({
     title,
     zIndex,
     position,
+    size,
     children,
 }) => {
     const dispatch = useDispatch<AppDispatch>();
@@ -53,11 +55,16 @@ const Window: React.FC<WindowProps> = ({
         >
             <div
                 ref={nodeRef}
-                className="absolute w-96 min-w-[300px] h-80 min-h-[200px] bg-gray-900/80 backdrop-blur-lg border border-white/20 rounded-lg shadow-2xl flex flex-col"
-                style={{ zIndex }}
+                className="absolute min-w-[300px] bg-gray-900/80 backdrop-blur-lg border border-white/20 rounded-lg shadow-2xl flex flex-col"
+                style={{
+                    zIndex,
+                    width: `${size.width}px`,
+                    minHeight: `${size.height}px`,
+                    maxHeight: "calc(100vh - 7rem)",
+                }}
                 onMouseDown={handleFocus}
             >
-                <div className="handle h-8 bg-black/30 flex items-center justify-between px-2 cursor-move rounded-t-lg">
+                <div className="handle h-8 bg-black/30 flex items-center justify-between px-2 cursor-move rounded-t-lg flex-shrink-0">
                     <span className="font-mono text-xs text-gray-300">{title}</span>
                     <button
                         onClick={handleClose}
