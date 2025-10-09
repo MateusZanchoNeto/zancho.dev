@@ -45,6 +45,10 @@ const appSlice = createSlice({
             state.status = "LOGIN";
             state.userRole = null;
         },
+        rebootSystem: (state) => {
+            state.status = "BOOTING";
+            state.userRole = null;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -64,5 +68,6 @@ const appSlice = createSlice({
     },
 });
 
-export const { finishBooting, loginAsVisitor, logout } = appSlice.actions;
+export const { finishBooting, loginAsVisitor, logout, rebootSystem } =
+    appSlice.actions;
 export default appSlice.reducer;
