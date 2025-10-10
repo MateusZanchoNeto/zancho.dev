@@ -2,7 +2,11 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { rebootSystem, logout } from "@/lib/redux/slices/appSlice";
+import {
+    rebootSystem,
+    logout,
+    shutdownSystem,
+} from "@/lib/redux/slices/appSlice";
 import {
     Power,
     Wifi,
@@ -44,8 +48,7 @@ const TopBar: React.FC = () => {
     const handleReboot = () => dispatch(rebootSystem());
     const handleLogout = () => dispatch(logout());
     const handleShutdown = () => {
-        window.open("", "_self");
-        window.close();
+        dispatch(shutdownSystem());
     };
 
     const formattedTime = time.toLocaleTimeString([], {
@@ -103,10 +106,7 @@ const TopBar: React.FC = () => {
                 </Tooltip>
 
                 <Tooltip text="Battery: 100%">
-                    <div className="flex items-center cursor-default">
-                        <BatteryFull size={18} />
-                        <span className="ml-1 text-xs">100%</span>
-                    </div>
+                    <BatteryFull size={18} />
                 </Tooltip>
 
                 <Tooltip text="Sound: 100%">

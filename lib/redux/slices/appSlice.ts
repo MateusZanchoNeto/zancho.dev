@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-type AppStatus = "BOOTING" | "LOGIN" | "DESKTOP";
+type AppStatus = "BOOTING" | "LOGIN" | "DESKTOP" | "SHUTTING_DOWN";
 type UserRole = "OWNER" | "VISITOR" | null;
 
 interface AppState {
@@ -36,6 +36,7 @@ const appSlice = createSlice({
     reducers: {
         finishBooting: (state) => {
             state.status = "LOGIN";
+            state.userRole = null;
         },
         loginAsVisitor: (state) => {
             state.status = "DESKTOP";
@@ -47,6 +48,10 @@ const appSlice = createSlice({
         },
         rebootSystem: (state) => {
             state.status = "BOOTING";
+            state.userRole = null;
+        },
+        shutdownSystem: (state) => {
+            state.status = "SHUTTING_DOWN";
             state.userRole = null;
         },
     },
@@ -68,6 +73,11 @@ const appSlice = createSlice({
     },
 });
 
-export const { finishBooting, loginAsVisitor, logout, rebootSystem } =
-    appSlice.actions;
+export const {
+    finishBooting,
+    loginAsVisitor,
+    logout,
+    rebootSystem,
+    shutdownSystem,
+} = appSlice.actions;
 export default appSlice.reducer;
