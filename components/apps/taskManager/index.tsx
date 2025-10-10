@@ -12,21 +12,36 @@ type Metric = "cpu" | "memory" | "disk" | "network";
 const METRICS: {
     key: Metric;
     label: string;
-    colorClass: string;
+    textColor: string;
+    bgColor: string;
     range: [number, number];
 }[] = [
-        { key: "cpu", label: "CPU", colorClass: "text-cyan-500", range: [15, 30] },
+        {
+            key: "cpu",
+            label: "CPU",
+            textColor: "text-cyan-500",
+            bgColor: "bg-cyan-500",
+            range: [15, 30],
+        },
         {
             key: "memory",
             label: "Memory",
-            colorClass: "text-purple-500",
+            textColor: "text-purple-500",
+            bgColor: "bg-purple-500",
             range: [50, 75],
         },
-        { key: "disk", label: "Disk", colorClass: "text-amber-500", range: [50, 60] },
+        {
+            key: "disk",
+            label: "Disk",
+            textColor: "text-amber-500",
+            bgColor: "bg-amber-500",
+            range: [50, 60],
+        },
         {
             key: "network",
             label: "Network",
-            colorClass: "text-green-500",
+            textColor: "text-green-500",
+            bgColor: "bg-green-500",
             range: [15, 24],
         },
     ];
@@ -51,17 +66,14 @@ const TaskManager: React.FC = () => {
         const interval = setInterval(() => {
             const newUsage = { ...usage };
             const newHistory = { ...history };
-
             METRICS.forEach((m) => {
                 const newValue = getRandomUsage(...m.range);
                 newUsage[m.key] = newValue;
                 newHistory[m.key] = [...newHistory[m.key].slice(1), newValue];
             });
-
             setUsage(newUsage);
             setHistory(newHistory);
         }, 2000);
-
         return () => clearInterval(interval);
     }, [usage, history]);
 
@@ -76,18 +88,18 @@ const TaskManager: React.FC = () => {
         switch (chartTypes[metric.key]) {
             case "radial":
                 return (
-                    <RadialChart percentage={percentage} colorClass={metric.colorClass} />
+                    <RadialChart percentage={percentage} colorClass={metric.textColor} />
                 );
             case "line":
                 return (
-                    <LineChart history={dataHistory} colorClass={metric.colorClass} />
+                    <LineChart history={dataHistory} colorClass={metric.textColor} />
                 );
             case "bar":
             default:
                 return (
                     <ProgressBarChart
                         percentage={percentage}
-                        colorClass={metric.colorClass.replace("text-", "bg-")}
+                        colorClass={metric.bgColor}
                     />
                 );
         }
