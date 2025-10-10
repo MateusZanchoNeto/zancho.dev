@@ -87,24 +87,6 @@ body {
   animation: pulse-glow 4s ease-in-out infinite;
 }
 
-.desktop-background {
-  position: relative;
-  isolation: isolate;
-}
-
-.desktop-background::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-
-  background-image: url("/desktop-bg.gif");
-  background-size: cover;
-  background-position: center;
-
-  filter: blur(8px);
-}
-
 @keyframes orb-move-1 {
   0% {
     transform: translate(-50%, -50%) scale(1);

@@ -20,7 +20,12 @@ const apps = [
     { id: "aboutMe", title: "About Me", icon: <User /> },
     { id: "projects", title: "Projects", icon: <Briefcase /> },
     { id: "contact", title: "Get In Touch", icon: <MessageSquare /> },
-    { id: "settings", title: "Settings", icon: <Settings /> },
+    {
+        id: "settings",
+        title: "Settings",
+        icon: <Settings />,
+        defaultSize: { width: 600, height: 550 },
+    },
     {
         id: "files",
         title: "Files",
