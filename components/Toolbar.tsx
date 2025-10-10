@@ -12,6 +12,7 @@ import {
     Calculator,
     BookText,
     TerminalSquare,
+    Folder,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -20,6 +21,12 @@ const apps = [
     { id: "projects", title: "Projects", icon: <Briefcase /> },
     { id: "contact", title: "Get In Touch", icon: <MessageSquare /> },
     { id: "settings", title: "Settings", icon: <Settings /> },
+    {
+        id: "files",
+        title: "Files",
+        icon: <Folder />,
+        defaultSize: { width: 800, height: 600 },
+    },
     {
         id: "calculator",
         title: "Calculator",
