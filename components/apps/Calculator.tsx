@@ -105,7 +105,7 @@ const Calculator: React.FC = () => {
     const functionBtn = `${baseBtn} bg-gray-400 hover:bg-gray-300 text-black`;
 
     return (
-        <div className="w-full h-full bg-gray-800 flex flex-col p-2">
+        <div className="w-full h-full bg-gray-800 flex flex-col p-2 rounded-xl">
             <div className="bg-black/50 text-white text-5xl text-right p-4 rounded-lg mb-2 break-words">
                 {displayValue}
             </div>

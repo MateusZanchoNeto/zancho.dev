@@ -55,7 +55,7 @@ const Notes: React.FC = () => {
     );
 
     return (
-        <div className="w-full h-full bg-gray-800 flex">
+        <div className="w-full h-full bg-gray-800 flex rounded-xl">
             <NoteSidebar
                 notes={filteredNotes}
                 activeNoteId={selectedNoteId}

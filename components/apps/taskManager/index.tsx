@@ -5,6 +5,7 @@ import ProgressBarChart from "./ProgressBarChart";
 import RadialChart from "./RadialChart";
 import LineChart from "./LineChart";
 import ChartSelector from "./ChartSelector";
+import { Cpu, MemoryStick, HardDrive, Server } from "lucide-react";
 
 type ChartType = "bar" | "radial" | "line";
 type Metric = "cpu" | "memory" | "disk" | "network";
@@ -12,6 +13,7 @@ type Metric = "cpu" | "memory" | "disk" | "network";
 const METRICS: {
     key: Metric;
     label: string;
+    icon: React.ReactNode;
     textColor: string;
     bgColor: string;
     range: [number, number];
@@ -19,6 +21,7 @@ const METRICS: {
         {
             key: "cpu",
             label: "CPU",
+            icon: <Cpu size={20} />,
             textColor: "text-cyan-500",
             bgColor: "bg-cyan-500",
             range: [15, 30],
@@ -26,6 +29,7 @@ const METRICS: {
         {
             key: "memory",
             label: "Memory",
+            icon: <MemoryStick size={20} />,
             textColor: "text-purple-500",
             bgColor: "bg-purple-500",
             range: [50, 75],
@@ -33,6 +37,7 @@ const METRICS: {
         {
             key: "disk",
             label: "Disk",
+            icon: <HardDrive size={20} />,
             textColor: "text-amber-500",
             bgColor: "bg-amber-500",
             range: [50, 60],
@@ -40,6 +45,7 @@ const METRICS: {
         {
             key: "network",
             label: "Network",
+            icon: <Server size={20} />,
             textColor: "text-green-500",
             bgColor: "bg-green-500",
             range: [15, 24],
@@ -106,11 +112,14 @@ const TaskManager: React.FC = () => {
     };
 
     return (
-        <div className="w-full h-full bg-gray-800 p-4 flex flex-col gap-4">
+        <div className="w-full h-full bg-gray-800 p-4 flex flex-col gap-4 rounded-xl">
             {METRICS.map((metric) => (
                 <div key={metric.key} className="bg-gray-700/50 p-3 rounded-lg">
                     <div className="flex justify-between items-center mb-2">
-                        <span className="font-mono text-gray-300">{metric.label}</span>
+                        <div className="flex items-center gap-2 font-mono text-gray-300">
+                            <span className={metric.textColor}>{metric.icon}</span>
+                            <span>{metric.label}</span>
+                        </div>
                         <ChartSelector
                             selected={chartTypes[metric.key]}
                             onChange={(type) => handleChartTypeChange(metric.key, type)}
