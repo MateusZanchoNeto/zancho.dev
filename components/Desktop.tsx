@@ -11,6 +11,7 @@ import FileManager from "./apps/fileManager";
 import Settings from "./apps/Settings";
 import Contact from "./apps/Contact";
 import Projects from "./apps/projects";
+import Browser from "./apps/browser";
 
 const AboutMeContent = () => <div>This is the About Me section.</div>;
 
@@ -30,6 +31,8 @@ const Desktop: React.FC = () => {
                 return <Contact />;
             case "calculator":
                 return <Calculator />;
+            case "browser":
+                return <Browser />;
             case "taskManager":
                 return <TaskManager />;
             case "notes":

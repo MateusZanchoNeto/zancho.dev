@@ -13,6 +13,7 @@ import {
     BookText,
     TerminalSquare,
     Folder,
+    Globe,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -36,6 +37,13 @@ const apps = [
         icon: <Settings />,
         defaultSize: { width: 600, height: 550 },
     },
+    {
+        id: "browser",
+        title: "Browser",
+        icon: <Globe />,
+        defaultSize: { width: 900, height: 600 },
+    },
+
     {
         id: "files",
         title: "Files",

@@ -6,7 +6,7 @@ import ProjectCard from "./ProjectCard";
 
 const Projects: React.FC = () => {
     return (
-        <div className="w-full h-min-full bg-gray-800 p-6 text-gray-200 rounded-xl">
+        <div className="w-full min-h-full bg-gray-800 p-6 text-gray-200 rounded-xl">
             {projectsData.map((category) => (
                 <section key={category.title} className="mb-8">
                     <h2 className="text-2xl font-bold border-b-2 border-green-500/50 pb-2 mb-4">
