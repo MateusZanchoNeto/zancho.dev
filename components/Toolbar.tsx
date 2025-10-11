@@ -19,7 +19,12 @@ import { motion } from "framer-motion";
 const apps = [
     { id: "aboutMe", title: "About Me", icon: <User /> },
     { id: "projects", title: "Projects", icon: <Briefcase /> },
-    { id: "contact", title: "Get In Touch", icon: <MessageSquare /> },
+    {
+        id: "contact",
+        title: "Get In Touch",
+        icon: <MessageSquare />,
+        defaultSize: { width: 850, height: 450 },
+    },
     {
         id: "settings",
         title: "Settings",

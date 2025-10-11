@@ -9,10 +9,10 @@ import TaskManager from "./apps/taskManager";
 import Notes from "./apps/notes";
 import FileManager from "./apps/fileManager";
 import Settings from "./apps/Settings";
+import Contact from "./apps/Contact";
 
 const AboutMeContent = () => <div>This is the About Me section.</div>;
 const ProjectsContent = () => <div>Here are my projects.</div>;
-const ContactContent = () => <div>Contact me here.</div>;
 
 const Desktop: React.FC = () => {
     const { windows } = useSelector((state: RootState) => state.windows);
@@ -27,7 +27,7 @@ const Desktop: React.FC = () => {
             case "projects":
                 return <ProjectsContent />;
             case "contact":
-                return <ContactContent />;
+                return <Contact />;
             case "calculator":
                 return <Calculator />;
             case "taskManager":
