@@ -9,6 +9,7 @@ import {
 } from "@/lib/redux/slices/appSlice";
 import AnimatedRings from "./AnimatedRings";
 import ScrambleQuote from "./ScrambleQuote";
+import { openWindow } from "@/lib/redux/slices/windowsSlice";
 
 export default function LoginScreen() {
     const dispatch = useDispatch<AppDispatch>();
@@ -19,9 +20,30 @@ export default function LoginScreen() {
     const [showPasswordInput, setShowPasswordInput] = useState(false);
     const [password, setPassword] = useState("");
 
+    const handleVisitorLogin = () => {
+        dispatch(loginAsVisitor());
+        dispatch(
+            openWindow({
+                id: "aboutMe",
+                title: "About Me",
+                size: { width: 700, height: 550 },
+            }),
+        );
+    };
+
     const handleOwnerSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        dispatch(verifyOwnerPassword(password));
+        dispatch(verifyOwnerPassword(password)).then((result) => {
+            if (result.type.endsWith("fulfilled")) {
+                dispatch(
+                    openWindow({
+                        id: "aboutMe",
+                        title: "About Me",
+                        size: { width: 700, height: 550 },
+                    }),
+                );
+            }
+        });
     };
 
     return (
@@ -34,7 +56,7 @@ export default function LoginScreen() {
                     <div className="space-y-4">
                         <h2 className="mb-4">Select User:</h2>
                         <button
-                            onClick={() => dispatch(loginAsVisitor())}
+                            onClick={() => dispatch(handleVisitorLogin)}
                             className="w-full p-2 bg-green-900 border border-green-600 hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-2xl"
                         >
                             Visitor

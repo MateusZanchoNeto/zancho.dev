@@ -12,8 +12,7 @@ import Settings from "./apps/Settings";
 import Contact from "./apps/Contact";
 import Projects from "./apps/projects";
 import Browser from "./apps/browser";
-
-const AboutMeContent = () => <div>This is the About Me section.</div>;
+import AboutMe from "./apps/AboutMe";
 
 const Desktop: React.FC = () => {
     const { windows } = useSelector((state: RootState) => state.windows);
@@ -24,7 +23,7 @@ const Desktop: React.FC = () => {
     const renderWindowContent = (id: string) => {
         switch (id) {
             case "aboutMe":
-                return <AboutMeContent />;
+                return <AboutMe />;
             case "projects":
                 return <Projects />;
             case "contact":
