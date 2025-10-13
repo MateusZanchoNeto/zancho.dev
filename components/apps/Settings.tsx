@@ -13,6 +13,7 @@ import {
     setControlButtonStyle,
     setTitleBarColor,
     toggleDesktopBlur,
+    setTheme,
 } from "@/lib/redux/slices/settingsSlice";
 
 const backgrounds = {
@@ -52,6 +53,20 @@ const Settings: React.FC = () => {
         <div className="w-full h-full bg-gray-800 p-4 text-gray-200 rounded-xl">
             <h2 className="text-2xl font-bold mb-4">Settings</h2>
 
+            {renderSection(
+                "Theme",
+                <div className="flex items-center justify-between">
+                    <label>Select a global theme</label>
+                    <select
+                        value={settings.theme}
+                        onChange={(e) => dispatch(setTheme(e.target.value as any))}
+                        className="bg-gray-700 p-1 rounded"
+                    >
+                        <option value="default">Default</option>
+                        <option value="matrix">Matrix</option>
+                    </select>
+                </div>,
+            )}
             {renderSection(
                 "Desktop Background",
                 <div>

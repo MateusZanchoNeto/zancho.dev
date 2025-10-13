@@ -10,12 +10,14 @@ import {
 import AnimatedRings from "./AnimatedRings";
 import ScrambleQuote from "./ScrambleQuote";
 import { openWindow } from "@/lib/redux/slices/windowsSlice";
+import BlurredOrbs from "./BlurredOrbs";
 
 export default function LoginScreen() {
     const dispatch = useDispatch<AppDispatch>();
     const { isAuthenticating, authError } = useSelector(
         (state: RootState) => state.app,
     );
+    const settings = useSelector((state: RootState) => state.settings);
 
     const [showPasswordInput, setShowPasswordInput] = useState(false);
     const [password, setPassword] = useState("");
@@ -46,24 +48,44 @@ export default function LoginScreen() {
         });
     };
 
-    return (
-        <div className="h-screen w-screen bg-black flex flex-col items-center justify-center font-mono relative p-4 gap-12">
-            <AnimatedRings />
+    const isMatrix = settings.theme === "matrix";
+    const bgColor = isMatrix ? "bg-black" : "bg-gray-800";
+    const cardBg = isMatrix ? "bg-gray-900" : "bg-gray-700/50 backdrop-blur-sm";
+    const textColor = isMatrix ? "text-green-400" : "text-gray-200";
+    const borderColor = isMatrix ? "border-green-700" : "border-white/20";
+    const buttonBg = isMatrix ? "bg-green-900" : "bg-cyan-600/50";
+    const buttonHoverBg = isMatrix
+        ? "hover:bg-green-800"
+        : "hover:bg-cyan-500/50";
+    const backButtonTextColor = isMatrix ? "text-green-600" : "text-cyan-400";
 
-            <div className="w-full max-w-sm p-8 bg-gray-900 border border-green-700 text-green-400 text-center z-30 rounded-2xl animate-pulse-glow">
+    return (
+        <div
+            className={`h-screen w-screen flex flex-col items-center justify-center font-mono relative p-4 gap-12 ${bgColor}`}
+        >
+            <div
+                className="absolute inset-0 bg-cover bg-center filter blur-md"
+                style={{ backgroundImage: settings.desktopBackground.value }}
+            />
+            {isMatrix && <AnimatedRings />}
+            {isMatrix && <BlurredOrbs />}
+
+            <div
+                className={`w-full max-w-sm p-8 text-center z-30 rounded-2xl ${cardBg} ${textColor} ${borderColor} ${isMatrix ? "animate-pulse-glow" : ""}`}
+            >
                 <h1 className="text-2xl mb-6">[ zancho.dev ]</h1>
                 {!showPasswordInput ? (
                     <div className="space-y-4">
                         <h2 className="mb-4">Select User:</h2>
                         <button
-                            onClick={() => dispatch(handleVisitorLogin)}
-                            className="w-full p-2 bg-green-900 border border-green-600 hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-2xl"
+                            onClick={handleVisitorLogin}
+                            className={`w-full p-2 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 ${borderColor} ${buttonBg} ${buttonHoverBg}`}
                         >
                             Visitor
                         </button>
                         <button
                             onClick={() => setShowPasswordInput(true)}
-                            className="w-full p-2 bg-green-900 border border-green-600 hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-2xl"
+                            className={`w-full p-2 border rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 ${borderColor} ${buttonBg} ${buttonHoverBg}`}
                         >
                             Owner
                         </button>
@@ -78,12 +100,12 @@ export default function LoginScreen() {
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Password"
                                 autoFocus
-                                className="w-full p-2 mb-4 bg-black border border-green-600 text-green-400 placeholder-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-2xl"
+                                className={`w-full p-2 mb-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-green-500 ${isMatrix ? "bg-black border-green-600 text-green-400 placeholder-green-700" : "bg-gray-800 border-gray-500 text-gray-200 placeholder-gray-400"}`}
                             />
                             <button
                                 type="submit"
                                 disabled={isAuthenticating}
-                                className="w-full p-2 bg-green-900 border border-green-600 hover:bg-green-800 disabled:bg-gray-700 disabled:cursor-not-allowed rounded-2xl"
+                                className={`w-full p-2 border rounded-2xl disabled:bg-gray-700 disabled:cursor-not-allowed ${borderColor} ${buttonBg} ${buttonHoverBg}`}
                             >
                                 {isAuthenticating ? "Authenticating..." : "Login"}
                             </button>
@@ -93,7 +115,7 @@ export default function LoginScreen() {
                         )}
                         <button
                             onClick={() => setShowPasswordInput(false)}
-                            className="text-sm mt-4 text-green-600 hover:underline"
+                            className={`text-sm mt-4 hover:underline ${backButtonTextColor}`}
                         >
                             &larr; Back
                         </button>
@@ -101,9 +123,11 @@ export default function LoginScreen() {
                 )}
             </div>
 
-            <div className="z-30">
-                <ScrambleQuote />
-            </div>
+            {isMatrix && (
+                <div className="z-30">
+                    <ScrambleQuote />
+                </div>
+            )}
         </div>
     );
 }

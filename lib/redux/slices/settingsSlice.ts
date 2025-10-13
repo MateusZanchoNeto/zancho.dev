@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface SettingsState {
+    theme: "default" | "matrix";
     desktopBackground: {
         type: "image" | "color";
         value: string;
@@ -19,6 +20,7 @@ export interface SettingsState {
 }
 
 const initialState: SettingsState = {
+    theme: "default",
     desktopBackground: {
         type: "image",
         value: 'url("/mountains-bg.jpg")',
@@ -40,6 +42,22 @@ const settingsSlice = createSlice({
     name: "settings",
     initialState,
     reducers: {
+        setTheme: (state, action: PayloadAction<"default" | "matrix">) => {
+            state.theme = action.payload;
+            if (action.payload === "matrix") {
+                state.desktopBackground = {
+                    type: "image",
+                    value: 'url("/matrix-bg.gif")',
+                    blur: true,
+                };
+            } else {
+                state.desktopBackground = {
+                    type: "image",
+                    value: 'url("/mountains-bg.jpg")',
+                    blur: true,
+                };
+            }
+        },
         setDesktopBackground: (
             state,
             action: PayloadAction<{ type: "image" | "color"; value: string }>,
@@ -81,6 +99,7 @@ const settingsSlice = createSlice({
 });
 
 export const {
+    setTheme,
     setDesktopBackground,
     setWindowOpacity,
     toggleWindowBlur,
