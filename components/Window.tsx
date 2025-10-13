@@ -141,7 +141,7 @@ const Window: React.FC<WindowProps> = ({
                     zIndex,
                     width: `${size.width}px`,
                     minHeight: `${size.height}px`,
-                    maxHeight: "calc(100vh - 7rem)",
+                    maxHeight: "calc(100vh - 9rem)",
                 }}
                 onMouseDown={handleFocus}
             >
