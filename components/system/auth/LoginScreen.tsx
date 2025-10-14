@@ -7,10 +7,10 @@ import {
     loginAsVisitor,
     verifyOwnerPassword,
 } from "@/lib/redux/slices/appSlice";
-import AnimatedRings from "./AnimatedRings";
-import ScrambleQuote from "./ScrambleQuote";
 import { openWindow } from "@/lib/redux/slices/windowsSlice";
-import BlurredOrbs from "./BlurredOrbs";
+import AnimatedRings from "@/components/visuals/AnimatedRings";
+import BlurredOrbs from "@/components/visuals/BlurredOrbs";
+import ScrambleQuote from "@/components/visuals/ScrambleQuote";
 
 export default function LoginScreen() {
     const dispatch = useDispatch<AppDispatch>();

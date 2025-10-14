@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { finishBooting } from "@/lib/redux/slices/appSlice";
-import { RootState } from "@/lib/redux/store"; // Import RootState
+import { RootState } from "@/lib/redux/store";
 
 export default function LoadingScreen() {
     const [progress, setProgress] = useState(0);
     const dispatch = useDispatch();
-    const settings = useSelector((state: RootState) => state.settings); // Get settings from Redux
+    const settings = useSelector((state: RootState) => state.settings);
 
     useEffect(() => {
         const loadingInterval = setInterval(() => {

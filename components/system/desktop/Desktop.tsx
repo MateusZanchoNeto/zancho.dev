@@ -3,16 +3,16 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/lib/redux/store";
 import TopBar from "./TopBar";
 import Toolbar from "./Toolbar";
-import Window from "./Window";
-import Calculator from "./apps/Calculator";
-import TaskManager from "./apps/taskManager";
-import Notes from "./apps/notes";
-import FileManager from "./apps/fileManager";
-import Settings from "./apps/Settings";
-import Contact from "./apps/Contact";
-import Projects from "./apps/projects";
-import Browser from "./apps/browser";
-import AboutMe from "./apps/AboutMe";
+import AboutMe from "@/components/apps/aboutMe";
+import Projects from "@/components/apps/projects";
+import Contact from "@/components/apps/contact";
+import Calculator from "@/components/apps/calculator";
+import Browser from "@/components/apps/browser";
+import TaskManager from "@/components/apps/taskManager";
+import FileManager from "@/components/apps/fileManager";
+import Notes from "@/components/apps/notes";
+import Settings from "@/components/apps/settings";
+import Window from "@/components/system/window/Window";
 
 const Desktop: React.FC = () => {
     const { windows } = useSelector((state: RootState) => state.windows);

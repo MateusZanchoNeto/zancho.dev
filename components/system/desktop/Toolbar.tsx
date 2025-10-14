@@ -3,7 +3,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { openWindow } from "@/lib/redux/slices/windowsSlice";
-import Tooltip from "./Tooltip";
 import {
     User,
     Briefcase,
@@ -16,6 +15,7 @@ import {
     Globe,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Tooltip from "@/components/common/Tooltip";
 
 const apps = [
     {
