@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
     title: {
         template: "%s | zancho.dev",
-        default: "zancho.dev - Mateus Zancho Neto | Full Stack Developer",
+        default: "Mateus Zancho Neto | Full Stack Developer",
     },
     description:
         "The interactive portfolio of Mateus Zancho Neto, a Full Stack Developer specializing in high-performance systems with React, Next.js, Rust, and Java.",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     authors: [{ name: "Mateus Zancho Neto", url: "https://zancho.dev" }],
 
     openGraph: {
-        title: "zancho.dev - Mateus Zancho Neto | Full Stack Developer",
+        title: "Mateus Zancho Neto | Full Stack Developer",
         description:
             "The interactive portfolio of Mateus Zancho Neto, a Full Stack Developer specializing in high-performance systems with React, Next.js, Rust, and Java.",
         url: "https://zancho.dev",
