@@ -6,8 +6,56 @@ import { StoreProvider } from "@/lib/redux/StoreProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "zancho.dev",
-    description: "Zancho's Portfolio",
+    title: {
+        template: "%s | zancho.dev",
+        default: "zancho.dev - Mateus Zancho Neto | Full Stack Developer",
+    },
+    description:
+        "The interactive portfolio of Mateus Zancho Neto, a Full Stack Developer specializing in high-performance systems with React, Next.js, Rust, and Java.",
+    keywords: [
+        "React Developer",
+        "Full Stack Developer",
+        "Next.js",
+        "Rust",
+        "Java",
+        "Node.js",
+        "PostgreSQL",
+        "Portfolio",
+        "Mateus Zancho Neto",
+    ],
+    authors: [{ name: "Mateus Zancho Neto", url: "https://zancho.dev" }],
+
+    openGraph: {
+        title: "zancho.dev - Mateus Zancho Neto | Full Stack Developer",
+        description:
+            "The interactive portfolio of Mateus Zancho Neto, a Full Stack Developer specializing in high-performance systems with React, Next.js, Rust, and Java.",
+        url: "https://zancho.dev",
+        siteName: "zancho.dev",
+        images: [
+            {
+                url: "https://zancho.dev/og-image.png",
+                width: 1200,
+                height: 630,
+                alt: "Mateus Zancho Neto - Full Stack Developer Portfolio",
+            },
+        ],
+        type: "website",
+    },
+
+    manifest: "/manifest.webmanifest",
+    icons: {
+        icon: "/icon.svg",
+        shortcut: "/favicon.ico",
+        apple: "/apple-icon.png",
+    },
+
+    twitter: {
+        card: "summary_large_image",
+        title: "zancho.dev - Mateus Zancho Neto | Full Stack Developer",
+        description:
+            "The interactive portfolio of Mateus Zancho Neto, a Full Stack Developer specializing in high-performance systems with React, Next.js, Rust, and Java.",
+        images: ["https://zancho.dev/og-image.png"],
+    },
 };
 
 export default function RootLayout({

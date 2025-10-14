@@ -51,7 +51,7 @@ const AboutMe: React.FC = () => {
     const accentColor = isMatrix ? "text-green-400" : "text-cyan-400";
 
     return (
-        <div className="w-full h-full bg-gray-800 p-6 text-gray-200 rounded-xl">
+        <div className="w-full  bg-gray-800 p-6 text-gray-200 rounded-xl">
             <header className="flex flex-col md:flex-row items-center gap-6 pb-6 border-b border-white/10">
                 <Image
                     src={profileImage}
