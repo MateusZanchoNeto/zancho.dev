@@ -9,7 +9,7 @@ const BrowserContent: React.FC<Props> = ({ url, iframeKey }) => (
     <iframe
         key={iframeKey}
         src={url}
-        className="w-full h-[500px] border-0 flex-grow rounded-b-xl"
+        className="w-full min-h-[500px] border-0 flex-grow rounded-b-xl"
         title="Browser Content"
         sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
     />

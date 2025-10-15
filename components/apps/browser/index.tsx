@@ -21,7 +21,7 @@ const Browser: React.FC = () => {
     };
 
     return (
-        <div className="w-full bg-gray-900 flex flex-col text-white rounded-xl">
+        <div className="w-full h-full bg-gray-900 flex flex-col text-white rounded-xl">
             <BrowserChrome
                 inputValue={inputValue}
                 onInputChange={setInputValue}
