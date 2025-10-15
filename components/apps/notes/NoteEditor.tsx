@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Note } from "./";
+import { Note } from "./useNotes";
 
 interface Props {
     note: Note | null;
@@ -30,7 +30,7 @@ const NoteEditor: React.FC<Props> = ({ note, onSave }) => {
     };
 
     return (
-        <div className="flex-1 flex flex-col p-4 bg-gray-800/50">
+        <div className="flex-1 flex flex-col p-4 bg-gray-800/50 rounded-r-xl">
             <div className="flex justify-between items-center mb-4">
                 <input
                     type="text"
@@ -47,7 +47,7 @@ const NoteEditor: React.FC<Props> = ({ note, onSave }) => {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="Your note..."
-                className="w-full h-full bg-transparent text-gray-300 focus:outline-none resize-none"
+                className="w-full h-[300px] bg-transparent text-gray-300 focus:outline-none resize-none"
             />
             <button
                 onClick={handleSave}

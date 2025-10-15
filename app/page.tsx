@@ -2,10 +2,10 @@
 
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/redux/store";
-import LoadingScreen from "@/components/LoadingScreen";
-import LoginScreen from "@/components/LoginScreen";
-import Desktop from "@/components/Desktop";
-import ShutdownScreen from "@/components/ShutdownScreen";
+import LoginScreen from "@/components/system/auth/LoginScreen";
+import ShutdownScreen from "@/components/system/auth/ShutdownScreen";
+import Desktop from "@/components/system/desktop/Desktop";
+import LoadingScreen from "@/components/system/auth/LoadingScreen";
 
 export default function Home() {
     const status = useSelector((state: RootState) => state.app.status);

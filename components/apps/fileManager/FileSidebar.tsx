@@ -1,35 +1,8 @@
-/* eslint-disable jsx-a11y/alt-text */
 "use client";
 
 import React from "react";
-import {
-    Search,
-    Home,
-    Clock,
-    Network,
-    Trash2,
-    FileText,
-    Music,
-    Image,
-    Video,
-    Download,
-} from "lucide-react";
-
-const folders = {
-    system: [
-        { id: "Home", label: "Home", icon: <Home size={18} /> },
-        { id: "Recent", label: "Recent", icon: <Clock size={18} /> },
-        { id: "Network", label: "Network", icon: <Network size={18} /> },
-        { id: "Trash", label: "Trash", icon: <Trash2 size={18} /> },
-    ],
-    user: [
-        { id: "Documents", label: "Documents", icon: <FileText size={18} /> },
-        { id: "Music", label: "Music", icon: <Music size={18} /> },
-        { id: "Pictures", label: "Pictures", icon: <Image size={18} /> },
-        { id: "Videos", label: "Videos", icon: <Video size={18} /> },
-        { id: "Downloads", label: "Downloads", icon: <Download size={18} /> },
-    ],
-};
+import { Search } from "lucide-react";
+import { userFolders } from "./fileManagerData";
 
 interface Props {
     activeFolder: string;
@@ -52,7 +25,7 @@ const FileSidebar: React.FC<Props> = ({
     const inactiveStyle = "hover:bg-white/10";
 
     return (
-        <div className="w-1/4 min-w-[200px] bg-gray-900/50 p-2 flex flex-col border-r border-white/10">
+        <div className="w-1/4 min-w-[200px] bg-gray-900/50 p-2 flex flex-col border-r border-white/10 rounded-l-xl">
             <div className="relative mb-2">
                 <Search
                     size={16}
@@ -69,7 +42,7 @@ const FileSidebar: React.FC<Props> = ({
 
             <nav className="flex flex-col gap-1">
                 <hr className="border-white/10 my-2" />
-                {folders.user.map((f) => (
+                {userFolders.map((f) => (
                     <button
                         key={f.id}
                         onClick={() => onFolderChange(f.id)}

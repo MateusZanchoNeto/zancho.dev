@@ -18,7 +18,7 @@ import {
     LogOut,
     PowerOff,
 } from "lucide-react";
-import Tooltip from "./Tooltip";
+import Tooltip from "@/components/common/Tooltip";
 
 const TopBar: React.FC = () => {
     const dispatch = useDispatch();
