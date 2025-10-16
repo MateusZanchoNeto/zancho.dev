@@ -1,4 +1,13 @@
-export const keypadLayout = [
+export type ButtonType = "digit" | "operator" | "function";
+
+interface KeypadButton {
+    label: string;
+    type: ButtonType;
+    action: string;
+    span?: number;
+}
+
+export const keypadLayout: KeypadButton[] = [
     { label: "AC", type: "function", action: "clear" },
     { label: "sin", type: "function", action: "sin" },
     { label: "cos", type: "function", action: "cos" },

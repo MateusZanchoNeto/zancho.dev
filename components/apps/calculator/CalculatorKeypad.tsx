@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import { keypadLayout } from "./keypadLayout";
+import { keypadLayout, ButtonType } from "./keypadLayout";
 
 interface KeypadActions {
     addDigit: (digit: string) => void;
@@ -14,7 +14,8 @@ interface KeypadActions {
 const CalculatorKeypad = ({ actions }: { actions: KeypadActions }) => {
     const baseBtn =
         "rounded-lg text-2xl h-16 transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-green-400";
-    const styles = {
+
+    const styles: Record<ButtonType, string> = {
         digit: `${baseBtn} bg-gray-600 hover:bg-gray-500 text-white`,
         operator: `${baseBtn} bg-emerald-700 hover:bg-emerald-600 text-white`,
         function: `${baseBtn} bg-gray-400 hover:bg-gray-300 text-black`,
