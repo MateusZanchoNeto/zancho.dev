@@ -75,12 +75,21 @@ const apps = [
     },
 ];
 
+const MOBILE_WIDTH_THRESHOLD = 768;
+
 const Toolbar: React.FC = () => {
     const dispatch = useDispatch();
+    const isMobile =
+        typeof window !== "undefined" && window.innerWidth < MOBILE_WIDTH_THRESHOLD;
 
     const handleIconClick = (app: (typeof apps)[0]) => {
         dispatch(
-            openWindow({ id: app.id, title: app.title, size: app.defaultSize }),
+            openWindow({
+                id: app.id,
+                title: app.title,
+                size: app.defaultSize,
+                isMobile,
+            }),
         );
     };
 
