@@ -17,7 +17,7 @@ const Notes: React.FC = () => {
     } = useNotes();
 
     return (
-        <div className="w-full h-full bg-gray-800 flex rounded-xl">
+        <div className="w-full h-full bg-gray-800 flex flex-col md:flex-row relative rounded-xl">
             <NoteSidebar
                 notes={filteredNotes}
                 activeNoteId={selectedNote?.id || null}

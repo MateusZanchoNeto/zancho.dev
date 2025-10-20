@@ -12,7 +12,7 @@ interface Props {
 const NoteItem: React.FC<Props> = ({ note, isActive, onSelect, onDelete }) => (
     <div
         onClick={onSelect}
-        className={`p-3 cursor-pointer border-b border-white/5 ${isActive ? "bg-green-800/50" : "hover:bg-white/5"} rounded-l-xl`}
+        className={`p-3 cursor-pointer border-b border-white/5 ${isActive ? "bg-green-800/50" : "hover:bg-white/5"} rounded-xl md:rounded-r-none`}
     >
         <div className="flex justify-between items-start">
             <h3 className="font-bold text-sm truncate">

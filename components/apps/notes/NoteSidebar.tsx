@@ -21,7 +21,7 @@ const NoteSidebar: React.FC<Props> = ({
     onSelectNote,
     onSearchChange,
 }) => (
-    <div className="w-1/3 min-w-[250px] bg-gray-900/50 flex flex-col border-r border-white/10 rounded-l-xl">
+    <div className="w-full md:w-1/4 md:min-w-[200px] h-auto md:h-full bg-gray-900/50 p-2 flex flex-col border-b border-white/10 md:border-b-0 md:border-r flex-shrink-0 rounded-t-xl md:rounded-t-none md:rounded-l-xl">
         <div className="p-2 flex items-center border-b border-white/10">
             <Search size={18} className="text-gray-400 mr-2" />
             <input
