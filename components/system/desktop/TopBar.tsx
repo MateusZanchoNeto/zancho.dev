@@ -62,7 +62,7 @@ const TopBar: React.FC = () => {
     });
 
     return (
-        <div className="w-full h-8 bg-black/50 backdrop-blur-md flex justify-between items-center px-2 font-mono text-sm text-gray-300 border-b border-white/10 relative z-20">
+        <div className="w-full h-8 bg-black/50 backdrop-blur-md flex justify-between items-center px-2 font-mono text-sm text-gray-300 border-b border-white/10 relative z-200">
             <div className="relative" ref={powerMenuRef}>
                 <button
                     onClick={() => setIsPowerMenuOpen(!isPowerMenuOpen)}

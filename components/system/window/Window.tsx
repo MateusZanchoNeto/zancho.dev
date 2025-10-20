@@ -136,7 +136,7 @@ const Window: React.FC<WindowProps> = ({
         >
             <div
                 ref={nodeRef}
-                className={`${baseClasses} min-w-[300px]`}
+                className={`${baseClasses} min-w-[300px] max-w-screen max-h-screen`}
                 style={{
                     zIndex,
                     width: `${size.width}px`,

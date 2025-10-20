@@ -12,8 +12,12 @@ import AnimatedRings from "@/components/visuals/AnimatedRings";
 import BlurredOrbs from "@/components/visuals/BlurredOrbs";
 import ScrambleQuote from "@/components/visuals/ScrambleQuote";
 
+const MOBILE_WIDTH_THRESHOLD = 768;
+
 export default function LoginScreen() {
     const dispatch = useDispatch<AppDispatch>();
+    const isMobile =
+        typeof window !== "undefined" && window.innerWidth < MOBILE_WIDTH_THRESHOLD;
     const { isAuthenticating, authError } = useSelector(
         (state: RootState) => state.app,
     );
@@ -29,6 +33,7 @@ export default function LoginScreen() {
                 id: "aboutMe",
                 title: "About Me",
                 size: { width: 700, height: 550 },
+                isMobile,
             }),
         );
     };
@@ -42,6 +47,7 @@ export default function LoginScreen() {
                         id: "aboutMe",
                         title: "About Me",
                         size: { width: 700, height: 550 },
+                        isMobile,
                     }),
                 );
             }

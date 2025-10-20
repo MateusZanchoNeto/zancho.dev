@@ -30,6 +30,7 @@ interface OpenWindowPayload {
     id: string;
     title: string;
     size?: { width: number; height: number };
+    isMobile: boolean;
 }
 
 const windowsSlice = createSlice({
@@ -37,8 +38,20 @@ const windowsSlice = createSlice({
     initialState,
     reducers: {
         openWindow: (state, action: PayloadAction<OpenWindowPayload>) => {
-            const { id, title, size } = action.payload;
+            const { id, title, size, isMobile } = action.payload;
             const existingWindow = state.windows.find((w) => w.id === id);
+
+            const newPosition = {
+                x: 150 + state.windows.length * 20,
+                y: 100 + state.windows.length * 20,
+            };
+
+            console.log(isMobile);
+            if (isMobile) {
+                newPosition.x = 0;
+                newPosition.y = 0;
+            }
+            console.log(newPosition);
 
             if (existingWindow) {
                 const maxZIndex = state.nextZIndex;
@@ -49,10 +62,7 @@ const windowsSlice = createSlice({
                     id,
                     title,
                     isOpen: true,
-                    position: {
-                        x: 150 + state.windows.length * 20,
-                        y: 100 + state.windows.length * 20,
-                    },
+                    position: newPosition,
                     zIndex: state.nextZIndex,
                     size: size || { width: 420, height: 250 },
                     isFullscreen: false,

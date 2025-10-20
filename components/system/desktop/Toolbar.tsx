@@ -75,12 +75,21 @@ const apps = [
     },
 ];
 
+const MOBILE_WIDTH_THRESHOLD = 768;
+
 const Toolbar: React.FC = () => {
     const dispatch = useDispatch();
+    const isMobile =
+        typeof window !== "undefined" && window.innerWidth < MOBILE_WIDTH_THRESHOLD;
 
     const handleIconClick = (app: (typeof apps)[0]) => {
         dispatch(
-            openWindow({ id: app.id, title: app.title, size: app.defaultSize }),
+            openWindow({
+                id: app.id,
+                title: app.title,
+                size: app.defaultSize,
+                isMobile,
+            }),
         );
     };
 
@@ -91,7 +100,7 @@ const Toolbar: React.FC = () => {
                     <Tooltip text={app.title} key={app.id} position="top">
                         <motion.button
                             onClick={() => handleIconClick(app)}
-                            className="w-12 h-12 flex items-center justify-center text-gray-300 hover:bg-white/20 rounded-lg"
+                            className="w-8 h-8 md:w-12 md:h-12 flex items-center justify-center text-gray-300 hover:bg-white/20 rounded-lg"
                             whileHover={{ y: -8 }}
                             transition={{ type: "spring", stiffness: 300, damping: 15 }}
                         >
