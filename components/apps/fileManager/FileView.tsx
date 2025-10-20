@@ -20,8 +20,8 @@ const FileView: React.FC<Props> = ({
 }) => {
     const fileInputRef = useRef<HTMLInputElement>(null);
     return (
-        <div className="flex-1 flex flex-col bg-gray-800/50 rounded-r-xl">
-            <header className="p-3 border-b border-white/10 flex justify-between items-center">
+        <div className="flex-1 flex flex-col bg-gray-800/50 min-w-0">
+            <header className="p-3 border-b border-white/10 flex justify-between items-center flex-shrink-0">
                 <h2 className="text-lg font-bold">{folderName}</h2>
                 <button
                     onClick={() => fileInputRef.current?.click()}

@@ -26,7 +26,7 @@ const FileManager: React.FC = () => {
     } = useFileManager();
 
     return (
-        <div className="w-full h-full bg-gray-800 flex relative rounded-xl">
+        <div className="w-full h-full bg-gray-800 flex flex-col md:flex-row relative rounded-xl">
             <FileSidebar
                 activeFolder={activeFolder}
                 onFolderChange={handleFolderChange}

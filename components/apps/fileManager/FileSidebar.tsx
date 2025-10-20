@@ -25,7 +25,7 @@ const FileSidebar: React.FC<Props> = ({
     const inactiveStyle = "hover:bg-white/10";
 
     return (
-        <div className="w-1/4 min-w-[200px] bg-gray-900/50 p-2 flex flex-col border-r border-white/10 rounded-l-xl">
+        <div className="w-full md:w-1/4 md:min-w-[200px] h-auto md:h-full bg-gray-900/50 p-2 flex flex-col border-b border-white/10 md:border-b-0 md:border-r flex-shrink-0 rounded-t-xl md:rounded-t-none md:rounded-l-xl">
             <div className="relative mb-2">
                 <Search
                     size={16}
