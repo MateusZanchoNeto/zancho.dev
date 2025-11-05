@@ -1,36 +1,43 @@
 {
-  "name": "zancho.dev",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "@reduxjs/toolkit": "^2.9.0",
-    "dexie": "^4.2.1",
-    "dexie-react-hooks": "^4.2.0",
-    "framer-motion": "^12.23.22",
-    "lucide-react": "^0.545.0",
-    "next": "15.5.4",
-    "nodemailer": "^7.0.9",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "react-draggable": "^4.5.0",
-    "react-redux": "^9.2.0"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/nodemailer": "^7.0.2",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.4",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+    "name": "zancho.dev",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "npm run services:up && npm run next && npm run services:stop",
+        "services:up": "npm run docker:compose -- up -d --build",
+        "services:stop": "npm run docker:compose -- stop",
+        "services:down": "npm run docker:compose -- down",
+        "docker:compose": "docker compose --env-file .env -f docker-compose.yml",
+        "next": "next dev --turbopack",
+        "build": "next build --turbopack",
+        "start": "next start",
+        "lint": "eslint"
+    },
+    "dependencies": {
+        "@reduxjs/toolkit": "^2.9.0",
+        "dexie": "^4.2.1",
+        "dexie-react-hooks": "^4.2.0",
+        "framer-motion": "^12.23.22",
+        "ioredis": "^5.8.2",
+        "lucide-react": "^0.545.0",
+        "next": "15.5.4",
+        "nodemailer": "^7.0.9",
+        "react": "19.1.0",
+        "react-dom": "19.1.0",
+        "react-draggable": "^4.5.0",
+        "react-redux": "^9.2.0"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "^3",
+        "@tailwindcss/postcss": "^4",
+        "@types/node": "^20",
+        "@types/nodemailer": "^7.0.2",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "concurrently": "^9.2.1",
+        "eslint": "^9",
+        "eslint-config-next": "15.5.4",
+        "tailwindcss": "^4",
+        "typescript": "^5"
+    }
 }

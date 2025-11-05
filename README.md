@@ -77,23 +77,13 @@ To run this project locally, follow these steps:
     npm install
     ```
 
-3.  **Set up environment variables:**
-    Configure the `.env` file in the root of your project and add your email credentials for the contact form to work. (Optional)
-
-    ```
-    EMAIL_SERVER_HOST=smtp.gmail.com
-    EMAIL_SERVER_PORT=465
-    EMAIL_SERVER_USER=your-email@gmail.com
-    EMAIL_SERVER_PASSWORD=your-gmail-app-password
-    EMAIL_TO=your-receiving-email@gmail.com
-    ```
-
 4.  **Run the development server:**
     ```bash
     npm run dev
     ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the Web App.
+Open [http://localhost:1080](http://localhost:1080) with your browser to see the Mailcatcher UI.
 
 ## 🖼️ Project Showcase
 

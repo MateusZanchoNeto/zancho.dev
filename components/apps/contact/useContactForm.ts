@@ -20,9 +20,7 @@ export function useContactForm() {
     const [status, setStatus] = useState<FormStatus>("idle");
     const [responseMessage, setResponseMessage] = useState("");
 
-    const handleChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    ) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
@@ -47,9 +45,8 @@ export function useContactForm() {
 
             setStatus("success");
             setFormData(initialFormData);
-        } catch (error) {
+        } catch {
             setStatus("error");
-            console.error(error);
         }
     };
 
