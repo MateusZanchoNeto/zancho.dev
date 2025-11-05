@@ -79,8 +79,7 @@ const MOBILE_WIDTH_THRESHOLD = 768;
 
 const Toolbar: React.FC = () => {
     const dispatch = useDispatch();
-    const isMobile =
-        typeof window !== "undefined" && window.innerWidth < MOBILE_WIDTH_THRESHOLD;
+    const isMobile = typeof window !== "undefined" && window.innerWidth < MOBILE_WIDTH_THRESHOLD;
 
     const handleIconClick = (app: (typeof apps)[0]) => {
         dispatch(
@@ -89,12 +88,12 @@ const Toolbar: React.FC = () => {
                 title: app.title,
                 size: app.defaultSize,
                 isMobile,
-            }),
+            })
         );
     };
 
     return (
-        <div className="w-full flex justify-center p-2 absolute bottom-0 z-20">
+        <div className="w-full flex flex-shrink-0 justify-center p-2 absolute bottom-0 z-20">
             <div className="flex items-center justify-center space-x-2 bg-black/50 backdrop-blur-md p-2 rounded-xl border border-white/10">
                 {apps.map((app) => (
                     <Tooltip text={app.title} key={app.id} position="top">
