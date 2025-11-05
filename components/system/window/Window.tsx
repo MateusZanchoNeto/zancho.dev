@@ -35,7 +35,7 @@ const Window: React.FC<WindowProps> = ({
     const dispatch = useDispatch<AppDispatch>();
     const nodeRef = useRef(null);
     const { window: windowSettings, windowControls } = useSelector(
-        (state: RootState) => state.settings,
+        (state: RootState) => state.settings
     );
 
     const handleFocus = () => {
@@ -46,9 +46,7 @@ const Window: React.FC<WindowProps> = ({
     const handleFullscreen = () => dispatch(toggleFullscreen(id));
     const handleDragStop = (_e: any, data: any) => {
         if (!isFullscreen) {
-            dispatch(
-                updateWindowPosition({ id, position: { x: data.x, y: data.y } }),
-            );
+            dispatch(updateWindowPosition({ id, position: { x: data.x, y: data.y } }));
         }
     };
 
@@ -86,19 +84,19 @@ const Window: React.FC<WindowProps> = ({
                 <div className="flex items-center space-x-1">
                     <button
                         onClick={handleMinimize}
-                        className={`${buttonSizeClasses[windowControls.buttonSize]} ${buttonStyleClasses[windowControls.buttonStyle]} hover:bg-yellow-500/80`}
+                        className={`${buttonSizeClasses[windowControls.buttonSize]} ${buttonStyleClasses[windowControls.buttonStyle]} hover:bg-yellow-500/80 no-drag`}
                     >
                         <Minus size={iconSizeMap[windowControls.buttonSize]} />
                     </button>
                     <button
                         onClick={handleFullscreen}
-                        className={`${buttonSizeClasses[windowControls.buttonSize]} ${buttonStyleClasses[windowControls.buttonStyle]} hover:bg-green-500/80`}
+                        className={`${buttonSizeClasses[windowControls.buttonSize]} ${buttonStyleClasses[windowControls.buttonStyle]} hover:bg-green-500/80 no-drag`}
                     >
                         <Square size={squareIconSizeMap[windowControls.buttonSize]} />
                     </button>
                     <button
                         onClick={handleClose}
-                        className={`${buttonSizeClasses[windowControls.buttonSize]} ${buttonStyleClasses[windowControls.buttonStyle]} hover:bg-red-500/80`}
+                        className={`${buttonSizeClasses[windowControls.buttonSize]} ${buttonStyleClasses[windowControls.buttonStyle]} hover:bg-red-500/80 no-drag`}
                     >
                         <X size={iconSizeMap[windowControls.buttonSize]} />
                     </button>
@@ -129,6 +127,7 @@ const Window: React.FC<WindowProps> = ({
         <Draggable
             nodeRef={nodeRef}
             handle=".handle"
+            cancel=".no-drag"
             position={position}
             onStart={handleFocus}
             onStop={handleDragStop}

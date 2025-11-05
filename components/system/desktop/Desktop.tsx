@@ -16,9 +16,7 @@ import Window from "@/components/system/window/Window";
 
 const Desktop: React.FC = () => {
     const { windows } = useSelector((state: RootState) => state.windows);
-    const { desktopBackground } = useSelector(
-        (state: RootState) => state.settings,
-    );
+    const { desktopBackground } = useSelector((state: RootState) => state.settings);
 
     const renderWindowContent = (id: string) => {
         switch (id) {
@@ -51,7 +49,7 @@ const Desktop: React.FC = () => {
             : { backgroundColor: desktopBackground.value };
 
     return (
-        <main className="h-screen w-screen overflow-hidden relative">
+        <main className="h-dvh w-screen overflow-hidden relative">
             <div
                 className={`
           absolute inset-0 bg-cover bg-center
@@ -63,7 +61,7 @@ const Desktop: React.FC = () => {
             <div className="relative z-10 h-full flex flex-col">
                 <TopBar />
 
-                <div className="flex-grow relative">
+                <div className="flex-1 relative overflow-hidden">
                     {windows.map((win) => (
                         <Window
                             key={win.id}

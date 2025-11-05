@@ -2,11 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import {
-    rebootSystem,
-    logout,
-    shutdownSystem,
-} from "@/lib/redux/slices/appSlice";
+import { rebootSystem, logout, shutdownSystem } from "@/lib/redux/slices/appSlice";
 import {
     Power,
     Wifi,
@@ -34,10 +30,7 @@ const TopBar: React.FC = () => {
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (
-                powerMenuRef.current &&
-                !powerMenuRef.current.contains(event.target as Node)
-            ) {
+            if (powerMenuRef.current && !powerMenuRef.current.contains(event.target as Node)) {
                 setIsPowerMenuOpen(false);
             }
         };
@@ -62,7 +55,7 @@ const TopBar: React.FC = () => {
     });
 
     return (
-        <div className="w-full h-8 bg-black/50 backdrop-blur-md flex justify-between items-center px-2 font-mono text-sm text-gray-300 border-b border-white/10 relative z-200">
+        <div className="w-full h-8 flex-shrink-0 bg-black/50 backdrop-blur-md flex justify-between items-center px-2 font-mono text-sm text-gray-300 border-b border-white/10 relative z-200">
             <div className="relative" ref={powerMenuRef}>
                 <button
                     onClick={() => setIsPowerMenuOpen(!isPowerMenuOpen)}
