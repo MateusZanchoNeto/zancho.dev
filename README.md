@@ -52,13 +52,13 @@ This project is a fully interactive and themeable desktop environment running in
 
 This project leverages a modern, robust, and scalable technology stack.
 
-| Category                | Technologies                                                                                                                                                                 |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Frontend**            | [React.js](https://react.dev/), [Next.js](https://nextjs.org/) (App Router), [TypeScript](https://www.typescriptlang.org/), [Redux Toolkit](https://redux-toolkit.js.org/)   |
-| **Styling**             | [Tailwind CSS](https://tailwindcss.com/), [Framer Motion](https://www.framer.com/motion/)                                                                                    |
-| **Client-side Storage** | [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) with [Dexie.js](https://dexie.org/) for the File Manager, `localStorage` for Notes and Settings. |
-| **Backend (API)**       | [Next.js API Routes](https://nextjs.org/docs/app/building-your-application/routing/route-handlers), [Nodemailer](https://nodemailer.com/)                                    |
-| **Deployment**          | [Vercel](https://vercel.com/)                                                                                                                                                |
+| Category                | Technologies                                                                                                                                                                                                                          |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                          |
+| **Frontend**            | [React.js](https://react.dev/), [Next.js](https://nextjs.org/) (App Router), [TypeScript](https://www.typescriptlang.org/), [Redux Toolkit](https://redux-toolkit.js.org/)                                                            |
+| **Styling**             | [Tailwind CSS](https://tailwindcss.com/), [Framer Motion](https://www.framer.com/motion/)                                                                                                                                             |
+| **Storage**             | [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) with [Dexie.js](https://dexie.org/) for the File Manager, `localStorage` for Notes and Settings, and [Redis](https://redis.io/) for caching the Firewall. |
+| **Backend (API)**       | [Next.js API Routes](https://nextjs.org/docs/app/building-your-application/routing/route-handlers), [Nodemailer](https://nodemailer.com/), [Docker](https://www.docker.com/)                                                          |
+| **Deployment**          | [Vercel](https://vercel.com/)                                                                                                                                                                                                         |
 
 ## 🚀 Getting Started
 
@@ -83,6 +83,7 @@ To run this project locally, follow these steps:
     ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the Web App.
+
 Open [http://localhost:1080](http://localhost:1080) with your browser to see the Mailcatcher UI.
 
 ## 🖼️ Project Showcase
