@@ -26,14 +26,18 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: "All fields are required." }, { status: 400 });
         }
 
+        const isProduction = process.env.NODE_ENV === "production";
+
         const transporter = nodemailer.createTransport({
             host: process.env.EMAIL_SERVER_HOST,
             port: Number(process.env.EMAIL_SERVER_PORT),
-            secure: true,
-            auth: {
-                user: process.env.EMAIL_SERVER_USER,
-                pass: process.env.EMAIL_SERVER_PASSWORD,
-            },
+            secure: isProduction,
+            auth: process.env.EMAIL_SERVER_USER
+                ? {
+                      user: process.env.EMAIL_SERVER_USER,
+                      pass: process.env.EMAIL_SERVER_PASSWORD,
+                  }
+                : undefined,
         });
 
         const mailOptions = {
